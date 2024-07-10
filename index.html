@@ -12,7 +12,26 @@
 <body>
   <div class="container" ng-app="myApp" ng-controller="myCtrl">
     <h1>Welcome to Your Personal Start Page</h1>
-    <p>{{ greeting }}</p>
+
+    <!-- Input form -->
+    <form ng-submit="addTile()">
+      <div class="form-group">
+        <label for="urlInput">Enter URL:</label>
+        <input type="text" class="form-control" id="urlInput" ng-model="newUrl" placeholder="https://example.com">
+      </div>
+      <button type="submit" class="btn btn-primary">Add Tile</button>
+    </form>
+
+    <!-- Tiles -->
+    <div class="row">
+      <div class="col-sm-4" ng-repeat="tile in tiles">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <a href="{{ tile.url }}" target="_blank">{{ tile.url }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Bootstrap JS and dependencies -->
@@ -23,7 +42,15 @@
   <script>
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope) {
-      $scope.greeting = 'Hello, world!';
+      $scope.tiles = []; // Array to store tiles
+
+      // Function to add a new tile
+      $scope.addTile = function() {
+        if ($scope.newUrl) {
+          $scope.tiles.push({ url: $scope.newUrl });
+          $scope.newUrl = ''; // Clear the input field
+        }
+      };
     });
   </script>
 </body>
