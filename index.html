@@ -1,7 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Start Page</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+  <div class="container" ng-app="myApp" ng-controller="myCtrl">
+    <h1>Welcome to Your Personal Start Page</h1>
+    <p>{{ greeting }}</p>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <!-- AngularJS Controller -->
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+      $scope.greeting = 'Hello, world!';
+    });
+  </script>
 </body>
 </html>
